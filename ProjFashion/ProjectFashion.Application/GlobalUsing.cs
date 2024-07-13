@@ -1,1 +1,1 @@
-﻿global using ProjFashion.ProjFashion.Application.Features.Products;
+﻿global using ProjFashion.ProjFashion.Application.Features;
