@@ -11,6 +11,6 @@ namespace ProjFashion.Core.Entities
     {
         public long ProductId { get; set; }
         public long Stock { get; set; }
-        public decimal Price { get; set; }
+        public decimal PrimeCost{ get; set; }
     }
 }
