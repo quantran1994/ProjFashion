@@ -9,6 +9,7 @@ namespace ProjFashion.Core.Entities
 {
     public class Order:BaseEntity
     {
+        //If exists in database then fill in
         public long CustomerId { get; set; }
         public decimal Total { get; set; }
         public string FullName { get; set; } = string.Empty;

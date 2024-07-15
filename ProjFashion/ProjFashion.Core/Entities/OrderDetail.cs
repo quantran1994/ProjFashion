@@ -11,7 +11,8 @@ namespace ProjFashion.Core.Entities
     public class OrderDetail:BaseEntity
     {
         public long OrderId { get; set; }
-        public long ProductId { get; set; }
+        public long ProductColorId { get; set; }
+        public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public EPaymentType PaymentType { get; set; }

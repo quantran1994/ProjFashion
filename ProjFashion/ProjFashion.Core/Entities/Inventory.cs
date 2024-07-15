@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProjFashion.Core.Entities
 {
-    public class Warehouse:BaseEntity
+    public class Inventory:BaseEntity
     {
-        public long ProductId { get; set; }
-        public long Stock { get; set; }
+        public long ProductColorId { get; set; }
+        public int Quantity { get; set; }
         public decimal PrimeCost{ get; set; }
     }
 }

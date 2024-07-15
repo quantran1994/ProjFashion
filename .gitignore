@@ -6,3 +6,4 @@
 # Ignore model files that are auto-generated
 ProjFashion/.vs
 ProjFashion/*/obj
+ProjFashion/*/bin
