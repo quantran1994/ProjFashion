@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProjFashion.Core.AuthenEntities
 {
-    public class ApplicationUser:IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public string? PictureLink{ get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

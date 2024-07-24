@@ -16,5 +16,7 @@ namespace ProjFashion.Core.Entities
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public EPaymentType PaymentType { get; set; }
+        public virtual ProductColor ProductColor { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

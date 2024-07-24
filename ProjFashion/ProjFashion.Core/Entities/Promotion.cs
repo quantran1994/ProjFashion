@@ -9,8 +9,9 @@ namespace ProjFashion.Core.Entities
 {
     public class Promotion:BaseEntity
     {
-        public long ProductId { get; set; }
-        public decimal SaleOff { get; set; }
+        public string PromotionName { get; set; }
+        public string Description { get; set; }
+        public decimal DiscountPercentage { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }

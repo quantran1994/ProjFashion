@@ -11,7 +11,7 @@ namespace ProjFashion.Core.Entities
     {
         //If exists in database then fill in
         public long CustomerId { get; set; }
-        public decimal Total { get; set; }
+        public decimal Amount { get; set; }
         public string FullName { get; set; } = string.Empty;
         public string PhoneNumber { get; set; }= string.Empty;
         public long ProvinceId { get; set; }

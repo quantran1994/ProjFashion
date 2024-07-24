@@ -10,7 +10,8 @@ namespace ProjFashion.Core.Entities
     public class Inventory:BaseEntity
     {
         public long ProductColorId { get; set; }
-        public int Quantity { get; set; }
+        public int QuantityInStock { get; set; }
         public decimal PrimeCost{ get; set; }
+        public virtual ProductColor ProductColor { get; set; }
     }
 }
