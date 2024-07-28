@@ -20,7 +20,7 @@ namespace ProjFashion.Infrastructure.AppDbContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("your_connection_string_here");
+            //optionsBuilder.UseSqlServer("your_connection_string_here");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,22 +41,22 @@ namespace ProjFashion.Infrastructure.AppDbContext
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders)
-                .HasForeignKey(o => o.CustomerID);
+                .HasForeignKey(o => o.CustomerId);
 
-            modelBuilder.Entity<OrderItem>()
+            modelBuilder.Entity<OrderDetail>()
                 .HasOne(oi => oi.Order)
-                .WithMany(o => o.OrderItems)
-                .HasForeignKey(oi => oi.OrderID);
+                .WithMany(o => o.OrderDetails)
+                .HasForeignKey(oi => oi.OrderId);
 
-            modelBuilder.Entity<OrderItem>()
-                .HasOne(oi => oi.Product)
-                .WithMany(p => p.OrderItems)
-                .HasForeignKey(oi => oi.ProductID);
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(oi => oi.ProductColor)
+                .WithMany(p => p.OrderDetais)
+                .HasForeignKey(oi => oi.ProductColorId);
 
             modelBuilder.Entity<Inventory>()
-                .HasOne(i => i.Product)
+                .HasOne(i => i.ProductColor)
                 .WithOne(p => p.Inventory)
-                .HasForeignKey<Inventory>(i => i.ProductID);
+                .HasForeignKey<Inventory>(i => i.ProductColorId);
         }
     }
 }

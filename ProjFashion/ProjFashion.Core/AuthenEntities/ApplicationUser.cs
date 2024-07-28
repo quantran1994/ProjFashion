@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ProjFashion.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace ProjFashion.Core.AuthenEntities
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string? ImageUrl { get; set; }
+        public virtual List<Order> Orders { get; set; } = new List<Order>();
     }
 }

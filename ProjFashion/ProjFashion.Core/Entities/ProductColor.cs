@@ -8,5 +8,7 @@ namespace ProjFashion.Core.Entities
         public int ProductId { get; set; }
         public int Size { get; set; }
         public virtual Product Product { get; set; }
+        public virtual List<OrderDetail> OrderDetais{ get; set; }
+        public virtual Inventory Inventory{ get; set; }
     }
 }

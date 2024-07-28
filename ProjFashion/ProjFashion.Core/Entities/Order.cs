@@ -1,4 +1,5 @@
-﻿using ProjFashion.Core.Common;
+﻿using ProjFashion.Core.AuthenEntities;
+using ProjFashion.Core.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace ProjFashion.Core.Entities
         public long DistrictId { get; set; }
         public long WardId { get; set; }
         public string Address { get; set; } = string.Empty;
+        public virtual ApplicationUser? Customer { get; set; }
+        public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
     }
 }
