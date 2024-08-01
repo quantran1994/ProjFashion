@@ -17,7 +17,8 @@ namespace ProjFashion.Core.Entities
         public EGenderFashion StyleFashion { get; set; }
         public bool IsBestSelling { get; set; }
         public double Star { get; set; }
-        public virtual Brand Brand { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Brand? Brand { get; set; }
+        public virtual Category? Category { get; set; }
+        public virtual ICollection<ProductColor>? ProductColors { get; set; }
     }
 }
