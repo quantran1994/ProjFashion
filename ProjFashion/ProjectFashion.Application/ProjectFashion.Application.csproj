@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Products\Commands\" />
-    <Folder Include="Features\Products\Queries\" />
+    <Folder Include="Features\Products\Commands\UpdateProduct\" />
+    <Folder Include="AutoMappers\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="5.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjFashion.Core\ProjFashion.Core.csproj" />
   </ItemGroup>
 
 </Project>
