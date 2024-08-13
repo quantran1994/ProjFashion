@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
 {
-    public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+    public class CreateProductValidator : AbstractValidator<CreateProductCommand>
     {
-        public CreateProductCommandValidator()
+        public CreateProductValidator()
         {
             RuleFor(model => model.Name).NotEmpty().WithMessage("Chưa nhập tên sản phẩm");
             RuleFor(model => model.CategoryId).GreaterThan(0).WithMessage("Chưa chọn loại sản phẩm");

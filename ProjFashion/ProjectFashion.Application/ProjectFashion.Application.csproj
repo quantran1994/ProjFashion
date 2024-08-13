@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Products\Commands\UpdateProduct\" />
     <Folder Include="AutoMappers\" />
   </ItemGroup>
 

@@ -1,26 +1,26 @@
-﻿using FluentValidation;
-using System.Text;
+﻿
+using FluentValidation;
 
-namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct.CreateProduct
+namespace ProjectFashion.Application.Features.Products.Commands.UpdateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, bool>
+    public class UpdateProductHandler : IRequestHandler<UpdateProductCommand, bool>
     {
-        private readonly CreateProductCommandValidator _validator = new CreateProductCommandValidator();
+        private readonly UpdateProductValidator _validator = new UpdateProductValidator();
         private readonly IProductRepository _productRepository;
 
-        public CreateProductCommandHandler(IProductRepository productRepository)
+        public UpdateProductHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
-        public async Task<bool> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
             var _resultValidate = _validator.Validate(request, opt => opt.ThrowOnFailures());
             if (!_resultValidate.IsValid)
             {
                 throw new Exception(_resultValidate.Errors.FirstOrDefault()?.ErrorMessage);
             }
-            return await _productRepository.Create(new ProjFashion.Core.Entities.Product
+            return await _productRepository.Update(new ProjFashion.Core.Entities.Product
             {
                 Name = request.Name,
                 Description = request.Description,

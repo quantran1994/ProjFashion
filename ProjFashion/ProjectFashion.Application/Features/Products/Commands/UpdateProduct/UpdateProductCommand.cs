@@ -1,15 +1,15 @@
-﻿using MediatR;
-using ProjFashion.Core.Enums;
+﻿using ProjFashion.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
+namespace ProjectFashion.Application.Features.Products.Commands.UpdateProduct
 {
-    public class CreateProductCommand : IRequest<bool>
+    public class UpdateProductCommand:IRequest<bool>
     {
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public long CategoryId { get; set; }
