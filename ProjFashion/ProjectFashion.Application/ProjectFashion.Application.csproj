@@ -7,16 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AutoMappers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProjFashion.Core\ProjFashion.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AutoMappers\" />
   </ItemGroup>
 
 </Project>

@@ -13,5 +13,6 @@ namespace ProjectFashion.Core.Interfaces.Repositories
         Task<bool> Create(T entity);
         Task<bool> Update(T entity);
         Task<bool> Delete(int id);
+        Task<bool> DeleteByListId(List<int> listId);
     }
 }
