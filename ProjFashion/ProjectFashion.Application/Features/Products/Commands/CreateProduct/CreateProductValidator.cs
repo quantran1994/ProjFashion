@@ -1,11 +1,4 @@
-﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
+﻿namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
 {
     public class CreateProductValidator : AbstractValidator<CreateProductCommand>
     {

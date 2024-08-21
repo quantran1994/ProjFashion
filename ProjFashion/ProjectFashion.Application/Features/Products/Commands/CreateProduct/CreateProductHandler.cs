@@ -1,9 +1,9 @@
 ﻿using ProjectFashion.Core.Interfaces;
 using ProjFashion.Core.Enums;
 
-namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct.CreateProduct
+namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
 {
-    public record CreateProductCommand(string Name, string Description, long CategoryId,long BrandId, EGenderFashion StyleFashion, bool IsBestSelling) : IRequest<bool>;
+    public record CreateProductCommand(string Name, string Description, long CategoryId,long BrandId, EGenderFashion StyleFashion, bool IsBestSelling,string UserName) : IRequest<bool>;
 
     public class CreateProductHandler : IRequestHandler<CreateProductCommand, bool>
     {
@@ -25,6 +25,8 @@ namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct.Cr
                 CategoryId = request.CategoryId,
                 BrandId = request.BrandId,
                 StyleFashion = request.StyleFashion,
+                Created=DateTime.Now,
+                CreatedBy= request.UserName
             });
             await _unitOfWork.SaveChangesAsync();
             return _added;

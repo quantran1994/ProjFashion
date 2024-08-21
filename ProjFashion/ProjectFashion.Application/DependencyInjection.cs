@@ -3,7 +3,7 @@ namespace ProjectFashion.Application
 {
     public static class DependencyInjection
     {
-        public static void InjectApplicationService(IServiceCollection services)
+        public static void InjectApplicationService(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

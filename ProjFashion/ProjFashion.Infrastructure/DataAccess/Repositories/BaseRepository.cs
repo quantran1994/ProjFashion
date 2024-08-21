@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjFashion.Infrastructure.DataAccess.Repositories
 {
-    public class BaseRepository<T>(ApplicationDbContext context) : IGenericRepository<T>, IDisposable where T : BaseEntity
+    public class BaseRepository<T>(ApplicationDbContext context) : IGenericRepository<T>, IDisposable where T : class, IEntity
     {
         protected ApplicationDbContext Context = context;
         private DbSet<T> _dbSet = context.Set<T>();

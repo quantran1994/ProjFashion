@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectFashion.Application.Features.Products.Commands.DeleteProduct
 {
-    public record DeleteProductCommand(List<string> ListId) : IRequest<bool>;
+    public record DeleteProductCommand(List<int> ListId) : IRequest<bool>;
 
     public class DeleteProductHandler : IRequestHandler<DeleteProductCommand, bool>
     {

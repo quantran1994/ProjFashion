@@ -12,7 +12,7 @@ namespace ProjFashion.Infrastructure.DataAccess
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        protected ApplicationDbContext()
+        public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
 
         }
@@ -38,13 +38,20 @@ namespace ProjFashion.Infrastructure.DataAccess
             modelBuilder.Entity<Category>().HasKey(c => c.Id);
             modelBuilder.Entity<Product>().HasKey(p => p.Id);
             modelBuilder.Entity<Order>().HasKey(o => o.Id);
+            modelBuilder.Entity<Order>()
+               .Property(x => x.Amount).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<OrderDetail>().HasKey(oi => oi.Id);
+            modelBuilder.Entity<OrderDetail>()
+                .Property(x => x.Discount).HasColumnType("decimal(18,4)");
+            modelBuilder.Entity<OrderDetail>()
+                .Property(x => x.Price).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Inventory>().HasKey(i => i.Id);
             modelBuilder.Entity<Brand>().HasKey(b => b.Id);
             modelBuilder.Entity<ProductColor>().HasKey(c => c.Id);
             modelBuilder.Entity<ProductColorImage>().HasKey(c => c.Id);
             modelBuilder.Entity<Product_Promotion>().HasKey(o => o.Id);
             modelBuilder.Entity<Promotion>().HasKey(o => o.Id);
+            modelBuilder.Entity<Promotion>().Property(x => x.DiscountPercentage).HasColumnType("decimal(18,4)");
 
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Category)
@@ -90,6 +97,7 @@ namespace ProjFashion.Infrastructure.DataAccess
                 .HasOne(i => i.ProductColor)
                 .WithMany(p => p.Inventories)
                 .HasForeignKey(i => i.ProductColorId);
+            modelBuilder.Entity<Inventory>().Property(x => x.PrimeCost).HasColumnType("decimal(18,4)");
         }
     }
 }
