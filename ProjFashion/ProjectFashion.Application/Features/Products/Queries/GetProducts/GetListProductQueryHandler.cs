@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProjectFashion.Application.Features.Products.Queries.GetListProduct
 {
+    public record GetProducts_Request : IRequest<List<Product_Response>>
+    {
+    }
     public class GetListProductQueryHandler : IRequestHandler<GetProducts_Request, List<Product_Response>>
     {
         private readonly IProductRepository _productRepository;

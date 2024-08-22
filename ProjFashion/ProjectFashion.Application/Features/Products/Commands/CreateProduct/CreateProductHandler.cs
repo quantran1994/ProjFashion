@@ -5,7 +5,7 @@ namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
 {
     public record CreateProductCommand(string Name, string Description, long CategoryId,long BrandId, EGenderFashion StyleFashion, bool IsBestSelling,string UserName) : IRequest<bool>;
 
-    public class CreateProductHandler : IRequestHandler<CreateProductCommand, bool>
+    public record CreateProductHandler : IRequestHandler<CreateProductCommand, bool>
     {
         private readonly IProductRepository _productRepository;
         private readonly IUnitOfWork _unitOfWork;

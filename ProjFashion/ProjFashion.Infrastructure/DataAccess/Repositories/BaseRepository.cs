@@ -16,14 +16,21 @@ namespace ProjFashion.Infrastructure.DataAccess.Repositories
         private DbSet<T> _dbSet = context.Set<T>();
         public Task<bool> Create(T entity)
         {
+            entity.Created = DateTime.Now;
             _dbSet.Add(entity);
+            return Task.FromResult(true);
+        }
+        public Task<bool> Update(T entity)
+        {
+            entity.LastModified = DateTime.Now;
+            _dbSet.Update(entity);
             return Task.FromResult(true);
         }
 
         public Task<bool> Delete(int id)
         {
-            T? _entity = _dbSet.Find(id);
-            EntityEntry<T>? _result = null;
+            T _entity = _dbSet.Find(id);
+            EntityEntry<T> _result = null;
             if (_entity != null)
             {
                 _result = _dbSet.Remove(_entity);
@@ -43,14 +50,6 @@ namespace ProjFashion.Infrastructure.DataAccess.Repositories
         public async Task<T> Get(int id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
 
         public async Task<List<T>> GetAll() => await _dbSet.ToListAsync();
-
-        public Task<bool> Update(T entity)
-        {
-            _dbSet.Update(entity);
-            return Task.FromResult(true);
-        }
-
-
         #region IDisposable
 
         // To detect redundant calls.

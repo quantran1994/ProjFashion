@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="AutoMappers\" />
+    <Folder Include="Features\Brands\Queries\" />
   </ItemGroup>
 
 </Project>
