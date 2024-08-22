@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace ProjectFashion.Application.Features.Products.Queries.GetListProduct
 {
-    public record GetProducts_Request : IRequest<List<Product_Response>>
+    public record Products_Query : IRequest<List<Product_Response>>
     {
     }
-    public class GetListProductQueryHandler : IRequestHandler<GetProducts_Request, List<Product_Response>>
+    public class GetListProductQueryHandler : IRequestHandler<Products_Query, List<Product_Response>>
     {
         private readonly IProductRepository _productRepository;
         public GetListProductQueryHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
-        public async Task<List<Product_Response>> Handle(GetProducts_Request request, CancellationToken cancellationToken)
+        public async Task<List<Product_Response>> Handle(Products_Query request, CancellationToken cancellationToken)
         {
             var _result = await _productRepository.GetAll();
             return new List<Product_Response>();

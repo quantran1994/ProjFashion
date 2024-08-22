@@ -27,7 +27,7 @@ namespace ProjFashion.Infrastructure.DataAccess.Repositories
             return Task.FromResult(true);
         }
 
-        public Task<bool> Delete(int id)
+        public Task<bool> Delete(long id)
         {
             T _entity = _dbSet.Find(id);
             EntityEntry<T> _result = null;
@@ -38,7 +38,7 @@ namespace ProjFashion.Infrastructure.DataAccess.Repositories
             return Task.FromResult(_result?.State == EntityState.Deleted);
         }
 
-        public Task<bool> DeleteByListId(List<int> listId)
+        public Task<bool> DeleteByListId(List<long> listId)
         {
             foreach (int id in listId)
             {
@@ -47,7 +47,7 @@ namespace ProjFashion.Infrastructure.DataAccess.Repositories
             return Task.FromResult(true);
         }
 
-        public async Task<T> Get(int id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<T> Get(long id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
 
         public async Task<List<T>> GetAll() => await _dbSet.ToListAsync();
         #region IDisposable

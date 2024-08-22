@@ -8,11 +8,11 @@ namespace ProjectFashion.Core.Interfaces.Repositories
 {
     public interface IGenericRepository<T>
     {
-        Task<T> Get(int id);
+        Task<T> Get(long id);
         Task<List<T>> GetAll();
         Task<bool> Create(T entity);
         Task<bool> Update(T entity);
-        Task<bool> Delete(int id);
-        Task<bool> DeleteByListId(List<int> listId);
+        Task<bool> Delete(long id);
+        Task<bool> DeleteByListId(List<long> listId);
     }
 }
