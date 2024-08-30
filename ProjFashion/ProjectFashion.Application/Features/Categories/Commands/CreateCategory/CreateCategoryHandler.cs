@@ -20,7 +20,7 @@ namespace ProjectFashion.Application.Features.Categories.Commands.CreateCategory
 
         public async Task<bool> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
-
+            return await Task.FromResult(true);
         }
     }
 }

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Dockerfile" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,6 +23,10 @@
     <ProjectReference Include="..\ProjectFashion.Application\ProjectFashion.Application.csproj" />
     <ProjectReference Include="..\ProjFashion.Core\ProjFashion.Core.csproj" />
     <ProjectReference Include="..\ProjFashion.Infrastructure\ProjFashion.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="..\.dockerignore" />
   </ItemGroup>
 
 </Project>
