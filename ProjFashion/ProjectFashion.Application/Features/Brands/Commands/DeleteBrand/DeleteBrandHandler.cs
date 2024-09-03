@@ -18,6 +18,7 @@ public class DeleteBrandHandler : IRequestHandler<DeleteBrandCommand, bool>
     public async Task<bool> Handle(DeleteBrandCommand request, CancellationToken cancellationToken)
     {
         var _result=await _brandRepository.DeleteByListId(request.ListId);
+        await _unitOfWork.SaveChangesAsync();
         return _result;
     }
 }
