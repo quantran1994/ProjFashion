@@ -1,4 +1,5 @@
 ﻿using ProjFashion.Core.Common;
+using ProjFashion.Core.Entities.Products;
 using ProjFashion.Core.Enums;
 using System;
 using System.Collections.Generic;

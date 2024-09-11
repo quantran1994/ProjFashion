@@ -6,6 +6,8 @@ using ProjFashion.Core.Interfaces.Repositories;
 using ProjFashion.Infrastructure.DataAccess;
 using ProjFashion.Infrastructure.DataAccess.Repositories;
 using ProjectFashion.Application;
+using ProjectFashion.Application.Features.Products.Commands.CreateProduct;
+using ProjFashion.Core.Enums;
 namespace Nunit.TestApplication
 {
     public class Tests
@@ -27,8 +29,10 @@ namespace Nunit.TestApplication
         }
 
         [Test]
-        public void Test1()
+        public async Task Test1()
         {
+            var _result = await _mediator.Send(new CreateProductCommand("a", "sdasda", 1, 1, EGenderFashion.Unisex, false, "QuanTran"));
+            Assert.True(_result);
             Assert.Pass();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using ProjFashion.Core.Common;
+using ProjFashion.Core.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;

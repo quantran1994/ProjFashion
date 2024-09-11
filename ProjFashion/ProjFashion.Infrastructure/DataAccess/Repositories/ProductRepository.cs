@@ -1,4 +1,4 @@
-﻿using ProjFashion.Core.Entities;
+﻿using ProjFashion.Core.Entities.Products;
 using ProjFashion.Core.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;

@@ -3,7 +3,7 @@ using ProjectFashion.Application.Features.Products.Commands.CreateProduct;
 using ProjectFashion.Application.Features.Products.Commands.DeleteProduct;
 using ProjectFashion.Application.Features.Products.Commands.UpdateProduct;
 using ProjectFashion.Application.Features.Products.Queries.GetAllQuery;
-using ProjFashion.Core.Entities;
+using ProjFashion.Core.Entities.Products;
 
 namespace ProjectFashion.Application.Features.Products.Mappers
 {

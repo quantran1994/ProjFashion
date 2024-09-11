@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using ProjFashion.Core.AuthenEntities;
 using ProjFashion.Core.Entities;
+using ProjFashion.Core.Entities.Inventories;
+using ProjFashion.Core.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;

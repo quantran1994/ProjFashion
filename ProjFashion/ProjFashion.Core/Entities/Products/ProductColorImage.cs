@@ -1,6 +1,6 @@
 ﻿using ProjFashion.Core.Common;
 
-namespace ProjFashion.Core.Entities
+namespace ProjFashion.Core.Entities.Products
 {
     public class ProductColorImage : BaseEntity
     {

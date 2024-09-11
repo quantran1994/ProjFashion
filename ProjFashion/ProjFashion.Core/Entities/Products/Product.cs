@@ -6,12 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjFashion.Core.Entities
+namespace ProjFashion.Core.Entities.Products
 {
     public class Product : BaseEntity
     {
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
+        public bool IsUse { get; set; }
         public long CategoryId { get; set; }
         public long BrandId { get; set; }
         public EGenderFashion StyleFashion { get; set; }

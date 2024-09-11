@@ -1,4 +1,5 @@
 ﻿using ProjFashion.Core.Common;
+using ProjFashion.Core.Entities.Products;
 
 namespace ProjFashion.Core.Entities
 {
