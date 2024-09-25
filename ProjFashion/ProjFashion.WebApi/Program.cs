@@ -27,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run(async context => context.Response.Headers.Add("a","Test value"));
+//app.Run(async context => context.Response.Headers.Add("a","Test value"));
 
 app.Run();

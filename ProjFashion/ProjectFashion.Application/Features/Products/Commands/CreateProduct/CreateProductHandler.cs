@@ -1,4 +1,5 @@
 ﻿using ProjectFashion.Core.Interfaces;
+using ProjFashion.Core.Entities.Products;
 using ProjFashion.Core.Enums;
 
 namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
@@ -18,7 +19,7 @@ namespace ProjectFashion.Application.Features.Products.Commands.CreateProduct
 
         public async Task<bool> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var _added = await _productRepository.Create(new ProjFashion.Core.Entities.Product
+            var _added = await _productRepository.Create(new Product
             {
                 Name = request.Name,
                 Description = request.Description,

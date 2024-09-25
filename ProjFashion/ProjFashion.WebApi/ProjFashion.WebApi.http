@@ -1,6 +1,6 @@
-@ProjFashion.WebApi_HostAddress = http://localhost:5291
+@WebApi_HostAddress = http://localhost:5291
 
-GET {{ProjFashion.WebApi_HostAddress}}/weatherforecast/
+GET {{WebApi_HostAddress}}/api/weatherforecast
 Accept: application/json
 
 ###

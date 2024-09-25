@@ -75,10 +75,10 @@ namespace ProjFashion.Infrastructure.DataAccess
                 .WithOne(f => f.ProductColor)
                 .HasForeignKey(f => f.ProductColorId);
 
-            modelBuilder.Entity<ProductColor>()
-                .HasMany(p => p.Inventories)
-                .WithOne(f => f.ProductColor)
-                .HasForeignKey(p => p.ProductColorId);
+            //modelBuilder.Entity<ProductColor>()
+            //    .HasMany(p => p.Inventories)
+            //    .WithOne(f => f.ProductColor)
+            //    .HasForeignKey(p => p.ProductColorId);
 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Customer)
@@ -90,15 +90,15 @@ namespace ProjFashion.Infrastructure.DataAccess
                 .WithMany(o => o.OrderDetails)
                 .HasForeignKey(oi => oi.OrderId);
 
-            modelBuilder.Entity<OrderDetail>()
-                .HasOne(oi => oi.ProductColor)
-                .WithMany(p => p.OrderDetais)
-                .HasForeignKey(oi => oi.ProductColorId);
+            //modelBuilder.Entity<OrderDetail>()
+            //    .HasOne(oi => oi.ProductColor)
+            //    .WithMany(p => p.OrderDetais)
+            //    .HasForeignKey(oi => oi.ProductColorId);
 
-            modelBuilder.Entity<Inventory>()
-                .HasOne(i => i.ProductColor)
-                .WithMany(p => p.Inventories)
-                .HasForeignKey(i => i.ProductColorId);
+            //modelBuilder.Entity<Inventory>()
+            //    .HasOne(i => i.ProductColor)
+            //    .WithMany(p => p.Inventories)
+            //    .HasForeignKey(i => i.ProductColorId);
             modelBuilder.Entity<Inventory>().Property(x => x.PrimeCost).HasColumnType("decimal(18,4)");
         }
     }

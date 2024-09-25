@@ -1,4 +1,6 @@
-﻿namespace ProjectFashion.Application.Features.Products.Commands.UpdateProduct
+﻿using ProjFashion.Core.Entities.Products;
+
+namespace ProjectFashion.Application.Features.Products.Commands.UpdateProduct
 {
     public record UpdateProductCommand(int Id, string Name, string Description, long CategoryId, long BrandId, EGenderFashion StyleFashion, bool IsBestSelling) : IRequest<bool>;
 
@@ -15,7 +17,7 @@
 
         public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var _updated = await _productRepository.Update(new ProjFashion.Core.Entities.Product
+            var _updated = await _productRepository.Update(new Product
             {
                 Name = request.Name,
                 Description = request.Description,
