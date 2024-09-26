@@ -19,7 +19,7 @@ namespace ProjectFashion.Application.Features.Products.Commands.CreateProductCla
 
         public Task<bool> Handle(CreateProductClassificationCommand request, CancellationToken cancellationToken)
         {
-
+            throw new Exception();
         }
     }
 }
