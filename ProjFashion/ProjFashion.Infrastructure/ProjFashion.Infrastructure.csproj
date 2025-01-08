@@ -23,4 +23,8 @@
     <ProjectReference Include="..\ProjFashion.Core\ProjFashion.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

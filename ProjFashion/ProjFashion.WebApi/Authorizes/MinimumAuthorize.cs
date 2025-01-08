@@ -17,15 +17,16 @@ namespace ProjFashion.WebApi.Authorizes
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, MinimumAgeRequirement requirement)
         {
-            var dateOfBirthClaim = context.User.FindFirst(
-            c => c.Type == ClaimTypes.DateOfBirth && c.Issuer == "http://contoso.com");
+         
+            //var dateOfBirthClaim = context.User.FindFirst(
+            //c => c.Type == ClaimTypes.DateOfBirth && c.Issuer == "http://contoso.com");
 
-            if (dateOfBirthClaim is null)
-            {
-                return Task.CompletedTask;
-            }
+            //if (dateOfBirthClaim is null)
+            //{
+            //    return Task.CompletedTask;
+            //}
 
-            var dateOfBirth = Convert.ToDateTime(dateOfBirthClaim.Value);
+            var dateOfBirth =new DateTime(2020,1,1);
             int calculatedAge = DateTime.Today.Year - dateOfBirth.Year;
             if (dateOfBirth > DateTime.Today.AddYears(-calculatedAge))
             {

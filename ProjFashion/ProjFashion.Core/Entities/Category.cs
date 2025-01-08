@@ -13,5 +13,6 @@ namespace ProjFashion.Core.Entities
         public string Name { get; set; } = string.Empty;
         public string Describe { get; set; } = string.Empty;
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<CategorySize> CategorySizes { get; set; }
     }
 }

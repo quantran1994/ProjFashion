@@ -21,14 +21,18 @@ namespace ProjFashion.Infrastructure.DataAccess
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<CategorySize> CategorySizes { get; set; }
         public DbSet<ProductColor> ProductColors { get; set; }
-        public DbSet<ProductColorImage> ProductColorImages { get; set; }
+        public DbSet<ProductVariant> ProductVariants { get; set; }
+        public DbSet<ProductVariantImage> ProductColorImages { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
         public DbSet<Product_Promotion> Product_Promotions { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<InventoryProduct> InventoryProducts { get; set; }
+        public DbSet<InventoryProduct_Detail> InventoryDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -48,13 +52,20 @@ namespace ProjFashion.Infrastructure.DataAccess
             modelBuilder.Entity<OrderDetail>()
                 .Property(x => x.Price).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Inventory>().HasKey(i => i.Id);
+            modelBuilder.Entity<InventoryProduct>().Property(x => x.SellingPrice).HasColumnType("decimal(18,4)");
+            modelBuilder.Entity<InventoryProduct>().Property(x => x.InputPrice).HasColumnType("decimal(18,4)");
+
+            modelBuilder.Entity<InventoryProduct_Detail>().HasKey(i => i.Id);
             modelBuilder.Entity<Brand>().HasKey(b => b.Id);
-            modelBuilder.Entity<ProductColor>().HasKey(c => c.Id);
-            modelBuilder.Entity<ProductColorImage>().HasKey(c => c.Id);
+            modelBuilder.Entity<ProductVariant>().HasKey(c => c.Id);
+            modelBuilder.Entity<ProductVariantImage>().HasKey(c => c.Id);
             modelBuilder.Entity<Product_Promotion>().HasKey(o => o.Id);
+            modelBuilder.Entity<CategorySize>().HasKey(o => o.Id);
+            modelBuilder.Entity<ProductColor>().HasKey(o => o.Id);
             modelBuilder.Entity<Promotion>().HasKey(o => o.Id);
             modelBuilder.Entity<Promotion>().Property(x => x.DiscountPercentage).HasColumnType("decimal(18,4)");
 
+            //Reference
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Category)
                 .WithMany(c => c.Products)
@@ -65,20 +76,31 @@ namespace ProjFashion.Infrastructure.DataAccess
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.BrandId);
 
-            modelBuilder.Entity<ProductColor>()
+            modelBuilder.Entity<ProductVariant>()
                 .HasOne(p => p.Product)
-                .WithMany(p => p.ProductColors)
+                .WithMany(p => p.ProductVariants)
                 .HasForeignKey(p => p.ProductId);
 
-            modelBuilder.Entity<ProductColor>()
-                .HasMany(p => p.ProductColorImages)
-                .WithOne(f => f.ProductColor)
-                .HasForeignKey(f => f.ProductColorId);
+            modelBuilder.Entity<ProductVariant>()
+                .HasOne(p => p.ProductColor)
+                .WithMany(f => f.ProductVariants)
+                .HasForeignKey(f => f.ProductColourId);
 
-            //modelBuilder.Entity<ProductColor>()
-            //    .HasMany(p => p.Inventories)
-            //    .WithOne(f => f.ProductColor)
-            //    .HasForeignKey(p => p.ProductColorId);
+            modelBuilder.Entity<ProductVariant>()
+                .HasOne(p => p.CategorySize)
+                .WithMany(f => f.ProductVariants)
+                .HasForeignKey(f => f.CategorySizeId);
+
+            modelBuilder.Entity<ProductVariantImage>()
+                .HasOne(p => p.ProductVariant)
+                .WithMany(f => f.ProductVariantImages)
+                .HasForeignKey(f => f.ProductVariantId);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(f => f.CategorySizes)
+                .WithOne(f => f.Category)
+                .HasForeignKey(f => f.CategoryId);
+
 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Customer)
@@ -90,16 +112,21 @@ namespace ProjFashion.Infrastructure.DataAccess
                 .WithMany(o => o.OrderDetails)
                 .HasForeignKey(oi => oi.OrderId);
 
-            //modelBuilder.Entity<OrderDetail>()
-            //    .HasOne(oi => oi.ProductColor)
-            //    .WithMany(p => p.OrderDetais)
-            //    .HasForeignKey(oi => oi.ProductColorId);
 
-            //modelBuilder.Entity<Inventory>()
-            //    .HasOne(i => i.ProductColor)
-            //    .WithMany(p => p.Inventories)
-            //    .HasForeignKey(i => i.ProductColorId);
-            modelBuilder.Entity<Inventory>().Property(x => x.PrimeCost).HasColumnType("decimal(18,4)");
+            modelBuilder.Entity<InventoryProduct_Detail>()
+                .HasOne(i => i.InventoryProduct)
+                .WithMany(p => p.Details)
+                .HasForeignKey(i => i.InventoryProductId);
+
+            modelBuilder.Entity<InventoryProduct>()
+                .HasOne(f => f.Inventory)
+                .WithMany(p => p.InventoryProducts)
+                .HasForeignKey(f => f.InventoryId);
+
+            modelBuilder.Entity<InventoryProduct>()
+             .HasOne(f => f.Product)
+             .WithMany(p => p.InventoryProducts)
+             .HasForeignKey(f => f.ProductId);
         }
     }
 }

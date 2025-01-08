@@ -1,4 +1,5 @@
 ﻿using ProjFashion.Core.Common;
+using ProjFashion.Core.Entities.Inventories;
 using ProjFashion.Core.Enums;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,10 @@ namespace ProjFashion.Core.Entities.Products
         public EGenderFashion StyleFashion { get; set; }
         public bool IsBestSelling { get; set; }
         public double Star { get; set; }
+        public bool HasClassification { get; set; }
         public virtual Brand? Brand { get; set; }
         public virtual Category? Category { get; set; }
-        public virtual ICollection<ProductColor>? ProductColors { get; set; }
+        public virtual ICollection<ProductVariant>? ProductVariants { get; set; }
+        public virtual ICollection<InventoryProduct>? InventoryProducts { get; set; }
     }
 }

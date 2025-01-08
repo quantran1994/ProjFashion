@@ -19,14 +19,10 @@ namespace ProjFashion.WebApi.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            ClaimsIdentity _identity = new ClaimsIdentity(new List<Claim>
-            {
-                new Claim(ClaimTypes.DateOfBirth,"21",ClaimValueTypes.Integer32)
-            });
-            HttpContext.User = new System.Security.Claims.ClaimsPrincipal(_identity);
+           
         }
 
-        [Authorize(Policy = "AtLeast21")]
+        //[Authorize(Policy = "AtLeast21")]
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

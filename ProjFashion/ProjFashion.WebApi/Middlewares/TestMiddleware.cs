@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace ProjFashion.WebApi.Middlewares
 {
@@ -7,23 +8,28 @@ namespace ProjFashion.WebApi.Middlewares
     {
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            if (context.Request.Path.Value.Equals("/api/WeatherForecast"))
+            ClaimsIdentity _identity = new ClaimsIdentity(new List<Claim>
             {
-                Console.WriteLine("CheckAcessMiddleware: Cấm truy cập");
-                await Task.Run(
-                  async () =>
-                  {
-                      string html = "<h1>CAM KHONG DUOC TRUY CAP</h1>";
-                      context.Response.StatusCode = StatusCodes.Status200OK;
-                      await context.Response.WriteAsync(html);
-                  }
-                );
-            }
-            else
-            {
+                new Claim(ClaimTypes.DateOfBirth,"21",ClaimValueTypes.Integer32)
+            });
+            context.User = new System.Security.Claims.ClaimsPrincipal(_identity);
+            //if (context.Request.Path.Value.Equals("/api/WeatherForecast"))
+            //{
+            //    Console.WriteLine("CheckAcessMiddleware: Cấm truy cập");
+            //    await Task.Run(
+            //      async () =>
+            //      {
+            //          string html = "<h1>CAM KHONG DUOC TRUY CAP</h1>";
+            //          context.Response.StatusCode = StatusCodes.Status200OK;
+            //          await context.Response.WriteAsync(html);
+            //      }
+            //    );
+            //}
+            //else
+            //{
                 context.Response.Headers.Add("X-Custom-Header", "Hello World");
                 await next(context);
-            }
+            //}
                 
         }
     }
